@@ -24,7 +24,7 @@ export function Navigation() {
 
   return (
     <nav
-      className="relative z-20 bg-black/40 backdrop-blur-xl border-b border-white/5"
+      className="relative z-20 bg-black/40 backdrop-blur-xl border-b border-white/5 nav-backdrop"
       role="navigation"
       aria-label="Main navigation"
     >
@@ -62,6 +62,8 @@ export function Navigation() {
             >
               <Search className="w-4 h-4 text-gray-400 mr-2" aria-hidden="true" />
               <input
+                id="search-tokens"
+                name="search"
                 type="text"
                 placeholder="Search tokens and pools"
                 value={searchQuery}
@@ -121,6 +123,8 @@ export function Navigation() {
                 <div className="flex items-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3">
                   <Search className="w-4 h-4 text-gray-400 mr-3" aria-hidden="true" />
                   <input
+                    id="mobile-search-tokens"
+                    name="search"
                     type="text"
                     placeholder="Search tokens and pools"
                     value={searchQuery}

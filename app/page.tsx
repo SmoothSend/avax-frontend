@@ -5,11 +5,14 @@ import { StatsSection } from "@/components/stats-section"
 import { FeaturesSection } from "@/components/features-section"
 import { ProtocolStats } from "@/components/protocol-stats"
 import { Footer } from "@/components/footer"
+import { ClientOnly } from "@/components/ui/client-only"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-hidden gradient-mesh noise-bg relative">
-      <FloatingBackground />
+    <div className="min-h-screen bg-black text-white overflow-hidden gradient-mesh noise-bg relative" suppressHydrationWarning>
+      <ClientOnly>
+        <FloatingBackground />
+      </ClientOnly>
       <Navigation />
       
       <main className="relative z-10" role="main" id="main-content">

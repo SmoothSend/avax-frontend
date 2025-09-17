@@ -4,7 +4,7 @@ import { GradientBackground, NoiseTexture, FloatingElement } from "./ui/backgrou
 
 export function FloatingBackground() {
   return (
-    <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true">
+    <div className="fixed inset-0 pointer-events-none z-0" aria-hidden="true" suppressHydrationWarning>
       {/* Base gradient backgrounds with better layering */}
       <GradientBackground variant="primary" />
       <NoiseTexture intensity="medium" />

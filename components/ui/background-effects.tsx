@@ -18,6 +18,7 @@ export function GradientBackground({ variant = "primary", className }: GradientB
       className={cn("absolute inset-0 pointer-events-none", className)}
       style={{ background: variants[variant] }}
       aria-hidden="true"
+      suppressHydrationWarning
     />
   )
 }
@@ -29,20 +30,24 @@ interface NoiseTextureProps {
 
 export function NoiseTexture({ intensity = "medium", className }: NoiseTextureProps) {
   const intensities = {
-    light: "opacity-6",
-    medium: "opacity-12",
-    heavy: "opacity-20"
+    light: "opacity-10",
+    medium: "opacity-15", 
+    heavy: "opacity-25"
   }
+
+  // Simplified pattern for better Firefox compatibility
+  const simplePattern = `data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3Cpattern id='noise' patternUnits='userSpaceOnUse' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23000000' opacity='0.05'/%3E%3Ccircle cx='15' cy='15' r='1' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='45' cy='35' r='0.5' fill='%23ffffff' opacity='0.15'/%3E%3Ccircle cx='25' cy='45' r='1.5' fill='%23000000' opacity='0.1'/%3E%3C/pattern%3E%3C/defs%3E%3Crect width='100%25' height='100%25' fill='url(%23noise)'/%3E%3C/svg%3E`;
 
   return (
     <div 
-      className={cn("absolute inset-0 pointer-events-none z-1 mix-blend-overlay", className)}
+      className={cn("absolute inset-0 pointer-events-none z-1 mix-blend-overlay", intensities[intensity], className)}
       style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch' seed='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.${intensities[intensity].replace('opacity-', '')}'/%3E%3C/svg%3E"), url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter2'%3E%3CfeTurbulence type='turbulence' baseFrequency='1.5' numOctaves='3' stitchTiles='stitch' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter2)' opacity='0.08'/%3E%3C/svg%3E")`,
-        backgroundSize: "300px 300px, 150px 150px",
+        backgroundImage: `url("${simplePattern}")`,
+        backgroundSize: "60px 60px",
         backgroundRepeat: "repeat"
       }}
       aria-hidden="true"
+      suppressHydrationWarning
     />
   )
 }
@@ -62,6 +67,7 @@ export function FloatingElement({ children, className, delay = 0, duration = 6 }
         animationDelay: `${delay}s`,
         animationDuration: `${duration}s`
       }}
+      suppressHydrationWarning
     >
       {children}
     </div>
