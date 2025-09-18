@@ -5,12 +5,12 @@ import { ethers } from 'ethers'
 
 // Configuration - matches the prototype
 const CONFIG = {
-  RELAYER_API: 'https://smoothsendevm.onrender.com',
-  CHAIN_ID: 43113, // Avalanche Fuji
-  CHAIN_NAME: 'avalanche-fuji',
-  USDC_ADDRESS: '0x5425890298aed601595a70AB815c96711a31Bc65',
-  CONTRACT_ADDRESS: '0xDaDbcb45964551DD45c0917029CC21882d31EC3B',
-  EXPLORER_URL: 'https://testnet.snowtrace.io'
+    RELAYER_API: process.env.NEXT_PUBLIC_RELAYER_API || 'https://smoothsendevm.onrender.com',
+    CHAIN_ID: Number(process.env.NEXT_PUBLIC_CHAIN_ID) || 43113,
+    CHAIN_NAME: process.env.NEXT_PUBLIC_CHAIN_NAME || 'avalanche-fuji',
+    USDC_ADDRESS: process.env.NEXT_PUBLIC_USDC_ADDRESS || '0x5425890298aed601595a70AB815c96711a31Bc65',
+    CONTRACT_ADDRESS: process.env.NEXT_PUBLIC_CONTRACT_ADDRESS || '0xDaDbcb45964551DD45c0917029CC21882d31EC3B',
+    EXPLORER_URL: process.env.NEXT_PUBLIC_EXPLORER_URL || 'https://testnet.snowtrace.io'
 } as const
 
 // Types
