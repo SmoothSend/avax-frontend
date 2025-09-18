@@ -4,24 +4,24 @@ import { StatsCard } from "@/components/ui/content-cards"
 export function ProtocolStats() {
   const protocolStats = [
     {
-      value: "$3.3T",
-      label: "All time volume", 
-      ariaLabel: "3.3 trillion dollars"
+      value: "100%",
+      label: "Uptime reliability", 
+      ariaLabel: "One hundred percent uptime"
     },
     {
-      value: "$4.7B",
-      label: "Total value locked",
-      ariaLabel: "4.7 billion dollars" 
+      value: "<2 sec",
+      label: "Average confirmation",
+      ariaLabel: "Less than 2 seconds" 
     },
     {
-      value: "119.0M", 
-      label: "All time swappers",
-      ariaLabel: "119 million"
+      value: "0 AVAX", 
+      label: "Gas required from users",
+      ariaLabel: "Zero AVAX required"
     },
     {
-      value: "$2.9B",
-      label: "24H swap volume",
-      ariaLabel: "2.9 billion dollars"
+      value: "24/7",
+      label: "Relayer availability",
+      ariaLabel: "24 7 availability"
     }
   ]
 
@@ -34,11 +34,11 @@ export function ProtocolStats() {
             aria-hidden="true"
           ></div>
           <span className="text-emerald-300/80 font-medium">
-            SmoothSend Protocol stats
+            Gasless Transfer Network stats
           </span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Protocol statistics">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8" role="list" aria-label="Network statistics">
           {protocolStats.map((stat, index) => (
             <StatsCard
               key={index}
@@ -46,7 +46,7 @@ export function ProtocolStats() {
               label={stat.label}
               ariaLabel={stat.ariaLabel}
               className={index === 3 ? "md:col-span-2 lg:col-span-1" : ""}
-              valueClassName={index === 3 ? "text-emerald-400" : ""}
+              valueClassName={index === 2 ? "text-emerald-400" : ""}
             />
           ))}
         </div>

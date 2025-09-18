@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { Web3Provider } from "@/contexts/web3-context";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -22,15 +23,15 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "SmoothSend | Swap anytime, anywhere",
-  description: "Buy and sell crypto seamlessly on 14+ networks including Ethereum, Unichain, and Base with the power of SmoothSend. Experience permissionless trading with deep liquidity and proven security.",
-  keywords: "crypto, swap, DEX, DeFi, Ethereum, Base, Unichain, blockchain, trading",
+  title: "SmoothSend | Gasless USDC Transfers",
+  description: "Send USDC without gas fees on Avalanche Fuji. Experience gasless transfers with our innovative relayer technology - pay only a small USDC fee.",
+  keywords: "crypto, gasless transfers, USDC, Avalanche, relayer, DeFi, blockchain, gas-free",
   authors: [{ name: "SmoothSend Labs" }],
   creator: "SmoothSend Labs",
   publisher: "SmoothSend Labs",
   openGraph: {
-    title: "SmoothSend | Swap anytime, anywhere",
-    description: "Buy and sell crypto seamlessly on 14+ networks with proven security and deep liquidity.",
+    title: "SmoothSend | Gasless USDC Transfers",
+    description: "Send USDC without gas fees using innovative relayer technology. Zero gas required from users.",
     url: "https://smoothsend.com",
     siteName: "SmoothSend",
     locale: "en_US",
@@ -38,8 +39,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SmoothSend | Swap anytime, anywhere",
-    description: "Buy and sell crypto seamlessly on 14+ networks with proven security and deep liquidity.",
+    title: "SmoothSend | Gasless USDC Transfers",
+    description: "Send USDC without gas fees using innovative relayer technology. Zero gas required from users.",
     creator: "@smoothsendlabs",
   },
   robots: {
@@ -72,7 +73,9 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        {children}
+        <Web3Provider>
+          {children}
+        </Web3Provider>
       </body>
     </html>
   );

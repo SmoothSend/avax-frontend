@@ -2,24 +2,31 @@
 
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Search, Menu, X } from "lucide-react"
+import { Menu, X, Wallet } from "lucide-react"
+import { useWeb3 } from "@/contexts/web3-context"
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState("")
+  const { isConnected, isConnecting, userAddress, connectWallet, disconnectWallet } = useWeb3()
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle search functionality
-    console.log('Searching for:', searchQuery)
+  const handleJoinWaitlist = () => {
+    window.open('https://forms.gle/your-waitlist-form', '_blank')
+  }
+
+  const handleConnectWallet = () => {
+    if (isConnected) {
+      disconnectWallet()
+    } else {
+      connectWallet()
+    }
   }
 
   const navItems = [
-    { label: "Trade", href: "#trade", description: "Start trading cryptocurrencies" },
-    { label: "Explore", href: "#explore", description: "Discover tokens and pools" },
-    { label: "Pool", href: "#pool", description: "Provide liquidity and earn rewards" }
+    { label: "Transfer", href: "#gasless-transfer-widget", description: "Send USDC without gas fees" },
+    { label: "Features", href: "#features-heading", description: "Learn about gasless transfers" },
+    { label: "Stats", href: "#stats-heading", description: "View network statistics" }
   ]
 
   return (
@@ -47,47 +54,53 @@ export function Navigation() {
                 variant="ghost"
                 className="text-white hover:text-emerald-400 hover:bg-white/10 transition-all duration-200 hover:shadow-lg hover:scale-105 focus-visible-emerald"
                 aria-label={item.description}
+                onClick={() => {
+                  const element = document.getElementById(item.href.substring(1))
+                  if (element) {
+                    element.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
               >
                 {item.label}
               </Button>
             ))}
           </div>
 
-          {/* Search and Actions */}
+          {/* Actions */}
           <div className="flex items-center space-x-4">
-            {/* Desktop Search */}
-            <form 
-              onSubmit={handleSearch}
-              className="hidden lg:flex items-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-full px-4 py-2 hover:bg-white/10 transition-all duration-200 focus-within:ring-2 focus-within:ring-emerald-400/50"
-            >
-              <Search className="w-4 h-4 text-gray-400 mr-2" aria-hidden="true" />
-              <input
-                id="search-tokens"
-                name="search"
-                type="text"
-                placeholder="Search tokens and pools"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="bg-transparent text-white placeholder-gray-400 outline-none focus:placeholder-gray-300 transition-colors w-48"
-                aria-label="Search tokens and pools"
-              />
-            </form>
-
-            {/* Get App Button */}
+            {/* Join Waitlist Button */}
             <Button
+              onClick={handleJoinWaitlist}
               variant="ghost"
               className="hidden sm:flex text-white hover:bg-white/10 transition-all duration-200 hover:shadow-lg hover:scale-105 focus-visible-emerald"
-              aria-label="Get the mobile app"
+              aria-label="Join our waitlist for updates"
             >
-              Get the app
+              Join Waitlist
             </Button>
 
             {/* Connect Button */}
             <Button
-              className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 focus-visible-emerald active:scale-95"
-              aria-label="Connect wallet"
+              onClick={handleConnectWallet}
+              disabled={isConnecting}
+              className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 focus-visible-emerald active:scale-95 flex items-center gap-2"
+              aria-label={isConnected ? "Disconnect wallet" : "Connect wallet to start gasless transfers"}
             >
-              Connect
+              {isConnecting ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  Connecting...
+                </>
+              ) : isConnected ? (
+                <>
+                  <Wallet className="w-4 h-4" />
+                  {userAddress ? `${userAddress.slice(0, 6)}...${userAddress.slice(-4)}` : 'Connected'}
+                </>
+              ) : (
+                <>
+                  <Wallet className="w-4 h-4" />
+                  Connect
+                </>
+              )}
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -111,36 +124,57 @@ export function Navigation() {
                 <Button
                   key={item.label}
                   variant="ghost"
+                  onClick={() => {
+                    const element = document.getElementById(item.href.substring(1))
+                    if (element) {
+                      element.scrollIntoView({ behavior: 'smooth' })
+                    }
+                    setIsMenuOpen(false) // Close menu after navigation
+                  }}
                   className="text-white hover:text-emerald-400 hover:bg-white/10 justify-start focus-visible-emerald"
                   aria-label={item.description}
                 >
                   {item.label}
                 </Button>
               ))}
-              
-              {/* Mobile Search */}
-              <form onSubmit={handleSearch} className="pt-4">
-                <div className="flex items-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg px-4 py-3">
-                  <Search className="w-4 h-4 text-gray-400 mr-3" aria-hidden="true" />
-                  <input
-                    id="mobile-search-tokens"
-                    name="search"
-                    type="text"
-                    placeholder="Search tokens and pools"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-transparent text-white placeholder-gray-400 outline-none focus:placeholder-gray-300 transition-colors flex-1"
-                    aria-label="Search tokens and pools"
-                  />
-                </div>
-              </form>
 
               <Button
+                onClick={() => {
+                  handleJoinWaitlist()
+                  setIsMenuOpen(false)
+                }}
                 variant="ghost"
                 className="text-white hover:text-emerald-400 hover:bg-white/10 justify-start mt-2 focus-visible-emerald"
-                aria-label="Get the mobile app"
+                aria-label="Join our waitlist for updates"
               >
-                Get the app
+                Join Waitlist
+              </Button>
+
+              <Button
+                onClick={() => {
+                  handleConnectWallet()
+                  setIsMenuOpen(false)
+                }}
+                disabled={isConnecting}
+                className="bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 focus-visible-emerald active:scale-95 flex items-center justify-start gap-2 mt-2"
+                aria-label={isConnected ? "Disconnect wallet" : "Connect wallet to start gasless transfers"}
+              >
+                {isConnecting ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                    Connecting...
+                  </>
+                ) : isConnected ? (
+                  <>
+                    <Wallet className="w-4 h-4" />
+                    {userAddress ? `${userAddress.slice(0, 6)}...${userAddress.slice(-4)}` : 'Connected'}
+                  </>
+                ) : (
+                  <>
+                    <Wallet className="w-4 h-4" />
+                    Connect
+                  </>
+                )}
               </Button>
             </div>
           </div>
