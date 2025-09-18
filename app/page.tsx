@@ -18,19 +18,25 @@ export default function HomePage() {
       <Navigation />
       
       <main className="relative z-10" role="main" id="main-content">
+        {/* Hero Section - Full viewport focus */}
         <HeroSection />
         
-        {/* Better visual rhythm and spacing between sections */}
-        <div className="space-y-16 md:space-y-20 lg:space-y-24">
-          <StatsSection />
+        {/* Main Content - Reduced spacing for better flow */}
+        <div className="relative">
+          {/* Stats Section - Immediate value proposition */}
+          <section className="py-8 md:py-12">
+            <StatsSection />
+          </section>
           
-          {/* Visual separator with subtle gradient */}
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent h-px"></div>
+          {/* Features Section - Detailed benefits */}
+          <section className="py-8 md:py-12">
             <FeaturesSection />
-          </div>
+          </section>
           
-          <ProtocolStats />
+          {/* Protocol Stats - Technical credibility */}
+          <section className="py-8 md:py-12 bg-gradient-to-b from-transparent via-black/20 to-transparent">
+            <ProtocolStats />
+          </section>
         </div>
       </main>
       

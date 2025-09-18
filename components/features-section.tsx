@@ -69,95 +69,83 @@ export function FeaturesSection() {
   ]
 
   return (
-    <Section ariaLabelledBy="features-heading" className="bg-gradient-to-b from-transparent to-black/20">
-      <Container>
-        <SectionHeader 
-          id="features-heading"
-          title="Why Choose Gasless Transfers?"
-          subtitle="Experience the future of crypto payments with our innovative gasless transfer system"
-        />
+    <Section ariaLabelledBy="features-heading" className="bg-gradient-to-b from-transparent to-black/20 py-12">
+      <Container className="max-w-7xl">
+        {/* Section Header with improved spacing */}
+        <div className="text-center mb-12">
+          <SectionHeader 
+            id="features-heading"
+            title="Why Choose Gasless Transfers?"
+            subtitle="Experience the future of crypto payments with our innovative gasless transfer system"
+          />
+        </div>
 
-        {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-12">
+        {/* Features Grid - Improved spacing and alignment */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10 mb-16">
           {features.map((feature, index) => (
             <Card 
               key={index}
-              className={`bg-gradient-to-br ${feature.gradient} backdrop-blur-sm border ${feature.border} hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-black/20`}
+              className={`bg-gradient-to-br ${feature.gradient} backdrop-blur-sm border ${feature.border} hover:scale-105 transition-all duration-300 hover:shadow-xl hover:shadow-black/20 h-full`}
             >
-              <div className="p-6 space-y-4">
-                <div className={`${feature.iconColor} bg-black/20 w-12 h-12 rounded-xl flex items-center justify-center`}>
+              <div className="p-8 space-y-6 h-full flex flex-col">
+                <div className={`${feature.iconColor} bg-black/20 w-16 h-16 rounded-xl flex items-center justify-center shrink-0`}>
                   {feature.icon}
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{feature.description}</p>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-bold text-white mb-3 leading-tight">{feature.title}</h3>
+                  <p className="text-gray-300 leading-relaxed text-base">{feature.description}</p>
                 </div>
               </div>
             </Card>
           ))}
         </div>
 
-        {/* How It Works Section */}
-        <div className="bg-black/20 backdrop-blur-sm rounded-2xl border border-white/10 p-8 md:p-12">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">How Gasless Transfers Work</h3>
-            <p className="text-gray-300 max-w-2xl mx-auto">
-              Our innovative system eliminates the need for gas fees while maintaining full security and decentralization.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            <div className="text-center space-y-3">
-              <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto">
-                1
-              </div>
-              <h4 className="text-lg font-semibold text-white">Connect & Sign</h4>
-              <p className="text-gray-400 text-sm">
-                Connect your MetaMask wallet and sign two secure messages: USDC permit and transfer authorization.
+        {/* How It Works Section - Enhanced layout */}
+        <div className="bg-black/20 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
+          <div className="p-8 md:p-12 lg:p-16">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-6">How Gasless Transfers Work</h3>
+              <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+                Our innovative system eliminates the need for gas fees while maintaining full security and decentralization.
               </p>
             </div>
 
-            <div className="text-center space-y-3">
-              <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto">
-                2
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10 lg:gap-12">
+              <div className="text-center space-y-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto shadow-lg">
+                  1
+                </div>
+                <div className="space-y-3">
+                  <h4 className="text-xl font-semibold text-white">Connect & Sign</h4>
+                  <p className="text-gray-400 leading-relaxed">
+                    Connect your MetaMask wallet and sign two secure messages: USDC permit and transfer authorization.
+                  </p>
+                </div>
               </div>
-              <h4 className="text-lg font-semibold text-white">Relayer Executes</h4>
-              <p className="text-gray-400 text-sm">
-                Our relayer uses your signatures to execute the transaction on-chain, paying all gas fees for you.
-              </p>
-            </div>
 
-            <div className="text-center space-y-3">
-              <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto">
-                3
+              <div className="text-center space-y-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto shadow-lg">
+                  2
+                </div>
+                <div className="space-y-3">
+                  <h4 className="text-xl font-semibold text-white">Relayer Executes</h4>
+                  <p className="text-gray-400 leading-relaxed">
+                    Our relayer uses your signatures to execute the transaction on-chain, paying all gas fees for you.
+                  </p>
+                </div>
               </div>
-              <h4 className="text-lg font-semibold text-white">Transfer Complete</h4>
-              <p className="text-gray-400 text-sm">
-                USDC is transferred to the recipient minus a small relayer fee. No AVAX required from you!
-              </p>
-            </div>
-          </div>
-        </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-12">
-          <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-white">Ready to try gasless transfers?</h3>
-            <p className="text-gray-400">Start sending USDC without gas fees in just a few clicks.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button
-                onClick={handleGetStarted}
-                className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
-              >
-                Start Transfer
-              </Button>
-              <Button
-                onClick={handleLearnMore}
-                variant="outline"
-                className="border-gray-600 text-gray-300 hover:bg-gray-800 px-8 py-3"
-              >
-                Learn More
-              </Button>
+              <div className="text-center space-y-6">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center text-2xl font-bold text-white mx-auto shadow-lg">
+                  3
+                </div>
+                <div className="space-y-3">
+                  <h4 className="text-xl font-semibold text-white">Transfer Complete</h4>
+                  <p className="text-gray-400 leading-relaxed">
+                    Funds arrive at the destination instantly. You only pay a small USDC fee, no gas required.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

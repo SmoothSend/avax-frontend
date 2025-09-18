@@ -26,9 +26,9 @@ export function ProtocolStats() {
   ]
 
   return (
-    <Section>
+    <Section className="py-0">
       <Container maxWidth="4xl">
-        <div className="flex items-center justify-center space-x-2 text-spacing">
+        <div className="flex items-center justify-center space-x-2 mb-8">
           <div 
             className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse" 
             aria-hidden="true"

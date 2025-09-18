@@ -36,15 +36,19 @@ export function StatsSection() {
   }
 
   return (
-    <Section ariaLabelledBy="stats-heading">
-      <Container>
-        <SectionHeader 
-          id="stats-heading"
-          title="The Future of Crypto Transfers"
-          subtitle="Experience gasless transfers powered by innovative relayer technology. Send USDC without needing AVAX for gas fees - our relayers handle the costs for you."
-        />
+    <Section ariaLabelledBy="stats-heading" className="py-12">
+      <Container className="max-w-7xl">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <SectionHeader 
+            id="stats-heading"
+            title="The Future of Crypto Transfers"
+            subtitle="Experience gasless transfers powered by innovative relayer technology. Send USDC without needing AVAX for gas fees - our relayers handle the costs for you."
+          />
+        </div>
 
-        <div className="stats-grid" role="list" aria-label="Gasless transfer benefits">
+        {/* Stats Grid with improved spacing */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 mb-16" role="list" aria-label="Gasless transfer benefits">
           {statsData.map((stat, index) => (
             <StatsCard
               key={index}
@@ -55,61 +59,54 @@ export function StatsSection() {
           ))}
         </div>
 
-        {/* Additional benefits section */}
-        <div className="mt-16 bg-gradient-to-br from-emerald-950/40 to-teal-950/40 backdrop-blur-sm rounded-2xl border border-emerald-500/20 p-8 md:p-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-white">
-                Why Gasless Transfers Matter
-              </h3>
-              <div className="space-y-4 text-gray-300">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <p><strong className="text-emerald-400">Accessibility:</strong> No need to hold multiple tokens for gas fees across different chains</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-teal-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <p><strong className="text-teal-400">Cost Efficiency:</strong> Pay only the transfer amount plus a small USDC fee</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <p><strong className="text-cyan-400">User Experience:</strong> Simplified workflow - just sign, don't worry about gas</p>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
-                  <p><strong className="text-green-400">Security:</strong> Maintain full control with cryptographic signatures</p>
+        {/* Benefits section with enhanced layout */}
+        <div className="bg-gradient-to-br from-emerald-950/40 to-teal-950/40 backdrop-blur-sm rounded-3xl border border-emerald-500/20 overflow-hidden">
+          <div className="p-8 md:p-12 lg:p-16">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              
+              <div className="space-y-8">
+                <h3 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                  Why Gasless Transfers Matter
+                </h3>
+                <div className="space-y-6 text-gray-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-3 h-3 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg leading-relaxed">
+                      <strong className="text-emerald-400 font-semibold">Accessibility:</strong> No need to hold multiple tokens for gas fees across different chains
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-3 h-3 bg-teal-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg leading-relaxed">
+                      <strong className="text-teal-400 font-semibold">Cost Efficiency:</strong> Pay only the transfer amount plus a small USDC fee
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-3 h-3 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg leading-relaxed">
+                      <strong className="text-cyan-400 font-semibold">User Experience:</strong> Simplified workflow - just sign, don't worry about gas
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-3 h-3 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg leading-relaxed">
+                      <strong className="text-green-400 font-semibold">Security:</strong> Maintain full control with cryptographic signatures
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="text-center md:text-left">
-              <div className="inline-flex flex-col items-center space-y-4">
-                <div className="bg-gradient-to-br from-emerald-500/20 to-teal-500/20 backdrop-blur-sm rounded-2xl p-8 border border-emerald-500/30">
-                  <div className="text-4xl md:text-5xl font-bold text-transparent bg-gradient-to-r from-emerald-400 to-teal-300 bg-clip-text mb-2">
-                    Try it now
-                  </div>
-                  <p className="text-gray-300">Experience the future of transfers</p>
-                </div>
-                
+              
+              <div className="text-center">
                 <Button
                   onClick={handleTryTransfer}
-                  className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
+                  className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold px-10 py-4 text-xl rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
                 >
                   Start Gasless Transfer
                 </Button>
               </div>
+              
             </div>
           </div>
-        </div>
-
-        <div className="text-center text-spacing mt-12">
-          <Button 
-            className="btn-primary hover-lift" 
-            aria-label="Learn more about gasless transfer technology"
-            onClick={() => window.open('https://github.com/yourusername/smoothsend', '_blank')}
-          >
-            Learn About the Technology →
-          </Button>
         </div>
       </Container>
     </Section>
