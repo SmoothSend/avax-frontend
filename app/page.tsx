@@ -21,19 +21,19 @@ export default function HomePage() {
         {/* Hero Section - Full viewport focus */}
         <HeroSection />
         
-        {/* Main Content - Reduced spacing for better flow */}
+        {/* Main Content - Logical flow for user journey */}
         <div className="relative">
-          {/* Stats Section - Immediate value proposition */}
-          <section className="py-8 md:py-12">
-            <StatsSection />
-          </section>
-          
-          {/* Features Section - Detailed benefits */}
+          {/* Features Section - Why choose gasless? Educational content */}
           <section className="py-8 md:py-12">
             <FeaturesSection />
           </section>
           
-          {/* Protocol Stats - Technical credibility */}
+          {/* Stats Section - Value proposition with detailed benefits */}
+          <section className="py-8 md:py-12">
+            <StatsSection />
+          </section>
+          
+          {/* Protocol Stats - Technical credibility and reliability */}
           <section className="py-8 md:py-12 bg-gradient-to-b from-transparent via-black/20 to-transparent">
             <ProtocolStats />
           </section>

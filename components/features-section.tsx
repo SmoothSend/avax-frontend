@@ -69,7 +69,7 @@ export function FeaturesSection() {
   ]
 
   return (
-    <Section ariaLabelledBy="features-heading" className="bg-gradient-to-b from-transparent to-black/20 py-12">
+    <Section ariaLabelledBy="features-heading" className="bg-gradient-to-b from-transparent to-black/20 py-0">
       <Container className="max-w-7xl">
         {/* Section Header with improved spacing */}
         <div className="text-center mb-12">

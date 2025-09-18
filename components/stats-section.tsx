@@ -36,7 +36,7 @@ export function StatsSection() {
   }
 
   return (
-    <Section ariaLabelledBy="stats-heading" className="py-12">
+    <Section ariaLabelledBy="stats-heading" className="py-0">
       <Container className="max-w-7xl">
         {/* Section Header */}
         <div className="text-center mb-12">
@@ -96,13 +96,36 @@ export function StatsSection() {
                 </div>
               </div>
               
-              <div className="text-center">
-                <Button
-                  onClick={handleTryTransfer}
-                  className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-semibold px-10 py-4 text-xl rounded-xl shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105"
-                >
-                  Start Gasless Transfer
-                </Button>
+              <div className="space-y-8">
+                <h4 className="text-3xl md:text-4xl font-bold text-white leading-tight">
+                  How It Works Technically
+                </h4>
+                <div className="space-y-6 text-gray-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-3 h-3 bg-emerald-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg leading-relaxed">
+                      <strong className="text-emerald-400 font-semibold">EIP-712 Signatures:</strong> Cryptographically secure message signing without blockchain interaction
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-3 h-3 bg-teal-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg leading-relaxed">
+                      <strong className="text-teal-400 font-semibold">Permit Functions:</strong> Token allowance granted through signature, no gas required
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-3 h-3 bg-cyan-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg leading-relaxed">
+                      <strong className="text-cyan-400 font-semibold">Relayer Execution:</strong> Our infrastructure submits transactions and pays gas costs
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-3 h-3 bg-green-400 rounded-full mt-2 flex-shrink-0"></div>
+                    <p className="text-lg leading-relaxed">
+                      <strong className="text-green-400 font-semibold">Instant Settlement:</strong> Transaction confirmed on Avalanche in seconds
+                    </p>
+                  </div>
+                </div>
               </div>
               
             </div>
