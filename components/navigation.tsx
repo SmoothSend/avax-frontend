@@ -69,16 +69,6 @@ export function Navigation() {
           </div>
 
           {/* Actions */}
-          <div className="flex items-center space-x-3 flex-shrink-0">
-            {/* Join Waitlist Button */}
-            <Button
-              onClick={handleJoinWaitlist}
-              variant="ghost"
-              className="hidden sm:flex text-white hover:bg-white/10 transition-all duration-200 hover:shadow-lg hover:scale-105 focus-visible-emerald px-4 py-2"
-              aria-label="Join our waitlist for updates"
-            >
-              Join Waitlist
-            </Button>
 
             {/* Connect Button */}
             <Button
@@ -139,18 +129,6 @@ export function Navigation() {
                   {item.label}
                 </Button>
               ))}
-
-              <Button
-                onClick={() => {
-                  handleJoinWaitlist()
-                  setIsMenuOpen(false)
-                }}
-                variant="ghost"
-                className="text-white hover:text-emerald-400 hover:bg-white/10 justify-start mt-2 focus-visible-emerald"
-                aria-label="Join our waitlist for updates"
-              >
-                Join Waitlist
-              </Button>
 
               <Button
                 onClick={() => {
