@@ -14,7 +14,7 @@ export function FeaturesSection() {
   }
 
   const handleLearnMore = () => {
-    window.open('https://github.com/yourusername/smoothsend', '_blank', 'noopener,noreferrer')
+    window.open('https://github.com/smoothsend', '_blank', 'noopener,noreferrer')
   }
 
   const features = [

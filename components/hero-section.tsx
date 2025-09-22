@@ -71,7 +71,7 @@ export function HeroSection() {
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </Button>
               <Button
-                onClick={() => window.open('https://github.com/yourusername/smoothsend', '_blank')}
+                onClick={() => window.open('https://github.com/smoothsend', '_blank')}
                 className="btn-secondary group flex items-center gap-2 px-8 py-3 text-base font-semibold"
                 aria-label="View source code"
               >
