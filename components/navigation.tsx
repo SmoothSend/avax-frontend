@@ -69,6 +69,7 @@ export function Navigation() {
           </div>
 
           {/* Actions */}
+          <div className="flex items-center space-x-3 flex-shrink-0">
 
             {/* Connect Button */}
             <Button
