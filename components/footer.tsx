@@ -60,7 +60,7 @@ export function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/smoothsendlabs"
+                    href="https://github.com/smoothsend"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-gray-400 hover:text-white transition-colors flex items-center gap-2 group"
