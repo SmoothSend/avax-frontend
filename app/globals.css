@@ -442,3 +442,15 @@
   .bg-black\/20 { background-color: rgba(0, 0, 0, 0.2) !important; }
   .bg-black\/30 { background-color: rgba(0, 0, 0, 0.3) !important; }
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
